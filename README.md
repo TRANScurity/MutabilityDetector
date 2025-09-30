@@ -3,6 +3,33 @@
 [![Join the chat at https://gitter.im/MutabilityDetector/main](https://badges.gitter.im/MutabilityDetector/main.svg)](https://gitter.im/MutabilityDetector/main?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://api.travis-ci.org/MutabilityDetector/MutabilityDetector.png?branch=master)](https://travis-ci.org/MutabilityDetector/MutabilityDetector)
 
+## Customizations in comparison to the original project
+
+The fix for Java 21 support in the original project is pending: https://github.com/MutabilityDetector/MutabilityDetector/issues/190
+
+To fix it temporarily as a forked artifact, I've modified the dependency versions for ASM and adjusted the ASM
+compatibility version. And, of course, the artifact's group ID and version.
+
+The special deployment of this project is published under:
+
+```maven
+<dependency>
+  <groupId>com.github.transcurity</groupId>
+  <artifactId>MutabilityDetector</artifactId>
+  <version>0.10.7-JAVA21FIX_1</version>
+</dependency>
+```
+
+The deployment can be performed by creating token credentials on https://central.sonatype.com and setting up Maven's
+`settings.xml` (see: https://central.sonatype.org/publish/publish-portal-maven/).
+
+The following parameters start a full build and deployment:
+
+```shell
+mvn -Prelease deploy
+```
+
+---
 ## What is Mutability Detector?
 Mutability Detector is designed to analyse Java classes and report on whether instances of a given class are immutable. It can be used:
 
